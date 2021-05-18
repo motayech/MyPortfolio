@@ -269,7 +269,7 @@ if dataset != None:
 
             if st.checkbox("Click here to see the units purchased in each store"):
                 st.write(str('{:,}'.format(online_purchases)) + ' units have been purchased from the online store')
-                st.write(str('{:,}'.format(store_purchases)) + ' units have been purchased from the online store')
+                st.write(str('{:,}'.format(store_purchases)) + ' units have been purchased from the physical store')
         
             st.markdown("<hr/>", unsafe_allow_html = True)
 
