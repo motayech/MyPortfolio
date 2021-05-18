@@ -386,7 +386,7 @@ if dataset != None:
                 st.pyplot()
         
         if alg == 'Decision Tree':
-            dt = DecisionTreeClassifier(max_depth = 6, max_features = 0.75)
+            dt = DecisionTreeClassifier(max_depth = 6, max_features = 0.75, random_state = 42)
             dt.fit(X_train, y_train)
             y_pred = dt.predict(X_test)
             acc = accuracy_score(y_pred, y_test)
@@ -406,7 +406,7 @@ if dataset != None:
                 st.pyplot()
         
         if alg == 'Random Forest':
-            rf = RandomForestClassifier(max_depth = 6, max_features = 0.75)
+            rf = RandomForestClassifier(max_depth = 6, max_features = 0.75, random_state = 42)
             rf.fit(X_train, y_train)
             y_pred = rf.predict(X_test)
             acc = accuracy_score(y_pred, y_test)
@@ -426,7 +426,7 @@ if dataset != None:
                 st.pyplot()
 
     if page == 'Prediction':
-        rf = RandomForestClassifier(max_depth = 6, max_features = 0.75)
+        rf = RandomForestClassifier(max_depth = 6, max_features = 0.75, random_state = 42)
         rf.fit(X_train, y_train)
 
         def predict_outcome(Year_Birth, Education, Income, Is_Coupled, Recency, Total_Spent, NumDealsPurchases, Total_Purchases, NumWebVisitsMonth, Complain):
