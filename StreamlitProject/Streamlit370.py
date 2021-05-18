@@ -110,12 +110,8 @@ if dataset != None:
         if st.checkbox("Click here to view the dataset!"):
             n = st.slider("How many rows of the dataset do you want to see?", min_value = 1, max_value = data_original.shape[0])
             st.dataframe(data_original.head(n))
-        
-        st.markdown("<hr/>", unsafe_allow_html = True)
-        
-        st.subheader('**How many customers do we have?**')
-        cust = str(data_original.shape[0]) + ' customers'
-        st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{cust}</h1>", unsafe_allow_html = True)
+            cust = str(data_original.shape[0]) + ' customers'
+            st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{cust}</h1>", unsafe_allow_html = True)
     
     if page == 'Dashboards':
         dashboard_choice = st.radio('What dashboard would you like to see?', ('Customer Overview', 'Sales Breakdown', 'Customer Behavior', 'Previous Campaign Performance'))
