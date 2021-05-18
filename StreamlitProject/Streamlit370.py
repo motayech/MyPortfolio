@@ -385,26 +385,6 @@ if dataset != None:
                 plot_roc_curve(knn, X_test, y_test)
                 st.pyplot()
         
-        if alg == 'SVC':
-            svc = LinearSVC(C = 0.01)
-            svc.fit(X_train, y_train)
-            y_pred = svc.predict(X_test)
-            acc = accuracy_score(y_pred, y_test)
-
-            st.write("SVC accurately predicts whether a customer will respond to a campaign or not " + str("{:.2%}".format(acc)) + " of the time")
-
-            cf, roc = st.beta_columns(2)
-
-            with cf:
-                st.subheader("Confusion Matrix")
-                plot_confusion_matrix(svc, X_test, y_test)
-                st.pyplot()
-
-            with roc:
-                st.subheader("ROC Curve")
-                plot_roc_curve(svc, X_test, y_test)
-                st.pyplot()
-        
         if alg == 'Decision Tree':
             dt = DecisionTreeClassifier(max_depth = 6, max_features = 0.75)
             dt.fit(X_train, y_train)
