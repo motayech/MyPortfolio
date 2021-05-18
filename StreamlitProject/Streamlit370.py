@@ -16,7 +16,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
-st.set_page_config(page_title = 'Store X Analysis Tool')
+st.set_page_config(page_title = 'Store X Analysis Tool', layout = 'wide')
 
 dataset = st.file_uploader("Please upload your dataset of interest here!", type = ["csv"])
 
