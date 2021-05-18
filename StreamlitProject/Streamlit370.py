@@ -391,7 +391,7 @@ if dataset != None:
             y_pred = dt.predict(X_test)
             acc = accuracy_score(y_pred, y_test)
 
-            st.write("Decision trees accurately predicts whether a customer will respond to a campaign or not " + str("{:.2%}".format(acc)) + " of the time")
+            st.write("Decision tree accurately predicts whether a customer will respond to a campaign or not **{accuracy}%**".formate(accuracy = acc))
 
             cf, roc = st.beta_columns(2)
 
