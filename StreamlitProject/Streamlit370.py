@@ -103,13 +103,19 @@ else:
 
 if dataset != None:
 
-    page = st.selectbox("Select the page of interest", ["Data Overview", "Dashboards",  "Machine Learning", "Prediction"])
+    page = st.selectbox("Select the page of interest", ["Data Overview", "Dashboards",  "Prediction Models", "Predicting Response to Campaigns"])
 
     if page == "Data Overview":
 
         if st.checkbox("Click here to view the dataset!"):
             n = st.slider("How many rows of the dataset do you want to see?", min_value = 1, max_value = data_original.shape[0])
             st.dataframe(data_original.head(n))
+        
+        st.markdown("<hr/>", unsafe_allow_html = True)
+        
+        st.subheader('**How many customers do we have?**')
+        cust = str(data_original.shape[0]) + ' customers'
+        st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{cust}</h1>", unsafe_allow_html = True)
     
     if page == 'Dashboards':
         dashboard_choice = st.radio('What dashboard would you like to see?', ('Customer Overview', 'Sales Breakdown', 'Customer Behavior', 'Previous Campaign Performance'))
@@ -288,12 +294,6 @@ if dataset != None:
         if dashboard_choice == 'Previous Campaign Performance':
             st.title("Previous Campaign Performance")
 
-            st.subheader('**How many customers do we have?**')
-            cust = str(data_original.shape[0]) + ' customers'
-            st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{cust}</h1>", unsafe_allow_html = True)
-            
-            st.markdown("<hr/>", unsafe_allow_html = True)
-
             st.subheader("**What is the success rate of our previous campaigns?**")
             cm1, cm2, cm3 = st.beta_columns(3)
 
@@ -342,7 +342,7 @@ if dataset != None:
             fig = px.line(cust_accept_data, x = 'Campaign Number', y = 'Number of Customers who Accepted Offer', title = 'Number of Customers Responding to Campaigns', width = 1150, color_discrete_sequence = ['#344B47'])
             st.plotly_chart(fig)
     
-    if page == 'Machine Learning':
+    if page == 'Prediction Models':
         alg = st.radio("What supervised ML algorithm would you like to see in predicting whether a customer will respond to a campaign or not?", ('Logistic Regression', 'KNN', 'Decision Tree', 'Random Forest'))
 
         if alg == 'Logistic Regression':
@@ -425,7 +425,7 @@ if dataset != None:
                 plot_roc_curve(rf, X_test, y_test)
                 st.pyplot()
 
-    if page == 'Prediction':
+    if page == 'Predicting Response to Campaigns':
         rf = RandomForestClassifier(max_depth = 6, max_features = 0.75, random_state = 42)
         rf.fit(X_train, y_train)
 
