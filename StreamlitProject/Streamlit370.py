@@ -343,7 +343,7 @@ if dataset != None:
             st.plotly_chart(fig)
     
     if page == 'Machine Learning':
-        alg = st.radio("What supervised ML algorithm would you like to see in predicting whether a customer will respond to a campaign or not?", ('Logistic Regression', 'KNN', 'SVC', 'Decision Tree', 'Random Forest'))
+        alg = st.radio("What supervised ML algorithm would you like to see in predicting whether a customer will respond to a campaign or not?", ('Logistic Regression', 'KNN', 'Decision Tree', 'Random Forest'))
 
         if alg == 'Logistic Regression':
             lr = LogisticRegression()
