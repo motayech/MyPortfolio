@@ -110,26 +110,24 @@ if dataset != None:
         if st.checkbox("Click here to view the dataset!"):
             n = st.slider("How many rows of the dataset do you want to see?", min_value = 1, max_value = data_original.shape[0])
             st.dataframe(data_original.head(n))
-            cust = str(data_original.shape[0]) + ' customers'
-            st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{cust}</h1>", unsafe_allow_html = True)
     
     if page == 'Dashboards':
-        dashboard_choice = st.radio('What dashboard would you like to see?', ('Customer Overview', 'Sales Breakdown', 'Customer Behavior', 'Previous Campaign Performance'))
+        dashboard_choice = st.radio('What dashboard would you like to see?', ('Customer Overview', 'Sales Breakdown', 'Purchase Breakdown & Complaints', 'Previous Campaign Performance'))
 
         if dashboard_choice == 'Customer Overview':
             col1, col2 = st.beta_columns(2)
 
             with col1:
-                st.subheader("**How old are our customers?**")
+                st.subheader("**Customer Year of Birth**")
                 fig = px.histogram(data_original, x = 'Year_Birth', nbins = 12, labels = {'Year_Birth': 'Birth Year'}, title = 'Histogram of Year of Birth', width = 520, height = 500, color_discrete_sequence = ['#10A898'])
                 st.plotly_chart(fig)
 
-                if st.checkbox('Show analysis of customr year of birth'):
+                if st.checkbox('Show analysis of customer year of birth'):
                     st.write("The histogram of customers' year of birth indicates that the majority of our customers are born in the year " + str(data_original['Year_Birth'].mode()[0]) + '. Our oldest customer was born in the year ' + str(data_original['Year_Birth'].min()) + ', while our youngest customer was born in the year ' + str(data_original['Year_Birth'].max()) + '.')
                     st.write("As a result, most of our customers are " + str(date.today().year - data_original['Year_Birth'].mode()[0]) + " years old, our oldest customer is " + str(date.today().year - data_original['Year_Birth'].min()) + ' years old, and our youngest customer is ' + str(date.today().year - data_original['Year_Birth'].max()) + ' years old.')
             
             with col2:
-                st.subheader("**What level of education do our customers have?**")
+                st.subheader("**Customer Education Level**")
                 fig = px.histogram(data_original, x = 'Education', color = 'Education', labels = {'Education': 'Education Level'}, title = "Bar Plot of Customer Education Levels", width = 520, height = 500, color_discrete_map = {'Graduation': '#3FBB94', 'PhD': '#69CE8C', 'Master': '#96DE81', 'Basic': '#C5EC77', '2n Cycle': '#F9F871'})
                 st.plotly_chart(fig)
 
@@ -140,7 +138,7 @@ if dataset != None:
             
             st.markdown("<hr/>", unsafe_allow_html = True)
 
-            st.subheader("**What are our customers' relationahip status?**")
+            st.subheader("**Customer Relationship Status**")
             statement = 'Percentage of customers who are not in a relationship 🔓'
             st.markdown(f"<h1 style ='text-align: center; color: black;'>{statement}</h1>", unsafe_allow_html = True)
             single = ((data_original['Is_Coupled'].value_counts()[0] / data_original['Is_Coupled'].value_counts().sum()) * 100).round(decimals = 2).astype('str') + '%' 
@@ -156,7 +154,7 @@ if dataset != None:
             col1, col2 = st.beta_columns(2)
 
             with col1:
-                st.subheader("**How much do our customers earn?**")
+                st.subheader("**Customer Income**")
                 fig = px.histogram(data_original, x = 'Income', nbins = 20, title = 'Histogram of Customer Income Levels', width = 520, height = 500, color_discrete_sequence = ['#10A898'])
                 st.plotly_chart(fig)
 
@@ -164,7 +162,7 @@ if dataset != None:
                     st.write("The histogram above seems to indicate that the median yearly household income of our customers is roughly equal to " + str(data_original['Income'].median()) + '. Our lowest income customer has an income of ' + str(data_original['Income'].min()) + ', while our highest income customer receives an income of ' + str(data_original['Income'].max()) + '.')
             
             with col2:
-                st.subheader('**How long ago did our customers visit our store?**')
+                st.subheader('**Customer Recency**')
                 fig = px.histogram(data_original, x = 'Recency', nbins = 12, labels = {'Recency': 'Recency (in days)'}, title = 'Histogram of Customer Income Levels', width = 520, height = 500, color_discrete_sequence = ['#96B1AC'])
                 st.plotly_chart(fig)
 
@@ -173,8 +171,7 @@ if dataset != None:
 
 
         if dashboard_choice == 'Sales Breakdown':
-            st.title("Sales Prediction")
-            st.subheader("**What products do we sell?**")
+            st.subheader("**Our Products**")
 
             wine, fruit, meat, fish, sweets = st.beta_columns(5)
 
@@ -208,13 +205,13 @@ if dataset != None:
 
             total_sales = wine_sales + fruit_sales + meat_sales + fish_sales + sweet_sales
 
-            st.subheader('**What are our total sales?**')
+            st.subheader('**Total Sales**')
             sales_value = str('${:,.2f}'.format(total_sales))
             st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{sales_value}</h1>", unsafe_allow_html = True)
 
             st.markdown("<hr/>", unsafe_allow_html = True)
 
-            st.subheader('**How are our sales distributed?**')
+            st.subheader('**Distribution of Sales**')
             sales_dict = {'Category': ['Wines', 'Fruit', 'Meat', 'Fish', 'Sweets'], 'Sales': [wine_sales, fruit_sales, meat_sales, fish_sales, sweet_sales]}
             sales_data = pd.DataFrame(sales_dict, columns = ['Category', 'Sales'])
 
@@ -228,10 +225,8 @@ if dataset != None:
                 st.write("The total sales for fish is equal to " + str('${:,.2f}'.format(fish_sales)))
                 st.write("The total sales for sweets is equal to " + str('${:,.2f}'.format(sweet_sales)))
    
-        if dashboard_choice == 'Customer Behavior':
-            st.title("Customer Behavior")
-
-            st.subheader('**Where can our customers purchase their products?**')
+        if dashboard_choice == 'Purchase Breakdown & Complaints':
+            st.subheader('**Our Stores**')
             online, store = st.beta_columns(2)
 
             with online:
@@ -246,7 +241,7 @@ if dataset != None:
             col1, col2 = st.beta_columns(2)
 
             with col1:
-                st.subheader("**How many units have our customers purchased?**")
+                st.subheader("**Total Units Purchased**")
 
                 online_purchases = data_original['NumWebPurchases'].sum()
                 store_purchases = data_original['NumStorePurchases'].sum()
@@ -256,13 +251,13 @@ if dataset != None:
                 st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{purchases_value}</h1>", unsafe_allow_html = True)
             
             with col2:
-                st.subheader("**What are the chances of a customer visiting the online store and carrying out a purchase?**")
+                st.subheader("**Percentage of Customers Visiting Online Store and Carrying out a Purchase**")
                 online_store_percentage = (data_original['NumWebPurchases'].sum() / data_original['NumWebVisitsMonth'].sum() * 100).round(decimals = 2).astype('str') + '%'
                 st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{online_store_percentage}</h1>", unsafe_allow_html = True)
 
             st.markdown("<hr/>", unsafe_allow_html = True)
 
-            st.subheader("**How are customer purchases distributed?**")
+            st.subheader("**Store Purchase Distribution**")
             purchases_dict = {'Purchase Location': ['Online', 'Physical'], 'Purchases': [online_purchases, store_purchases]}
             purchases_data = pd.DataFrame(purchases_dict, columns = ['Purchase Location', 'Purchases'])
             
@@ -278,19 +273,19 @@ if dataset != None:
             col1, col2 = st.beta_columns(2)
 
             with col1:
-                st.subheader("**What is the percentage of purchases that were made on a discount?**")
+                st.subheader("**Percentage of Discounted Purchases**")
                 discount_percentage = (data_original['NumDealsPurchases'].sum() / total_purchases * 100).round(decimals = 2).astype('str') + '%'
                 st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{discount_percentage}</h1>", unsafe_allow_html = True)
 
             with col2:
-                st.subheader("**What is the percentage of customers who have issued a complaint?**")
+                st.subheader("**Percentage of Customers Issuing a Complaint**")
                 complaint_percentage = (data_original['Complain'].value_counts()[1] / data_original['Complain'].value_counts().sum() * 100).round(decimals = 2).astype('str') + '%'
                 st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{complaint_percentage}</h1>", unsafe_allow_html = True)
 
         if dashboard_choice == 'Previous Campaign Performance':
             st.title("Previous Campaign Performance")
 
-            st.subheader("**What is the success rate of our previous campaigns?**")
+            st.subheader("**Success Rate of Previous Campaigns**")
             cm1, cm2, cm3 = st.beta_columns(3)
 
             with cm1:
@@ -324,7 +319,7 @@ if dataset != None:
         
             st.markdown("<hr/>", unsafe_allow_html = True)
 
-            st.subheader('**How many customers have responded to our campaigns?**')
+            st.subheader('**Customer Response to Campaigns**')
             cust_accept_offer = [data_original['AcceptedCmp1'].value_counts()[1], data_original['AcceptedCmp2'].value_counts()[1], 
             data_original['AcceptedCmp3'].value_counts()[1], data_original['AcceptedCmp4'].value_counts()[1], 
             data_original['AcceptedCmp5'].value_counts()[1]]
