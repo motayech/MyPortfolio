@@ -283,8 +283,6 @@ if dataset != None:
                 st.markdown(f"<h1 style ='text-align: center; color: #344B47;'>{complaint_percentage}</h1>", unsafe_allow_html = True)
 
         if dashboard_choice == 'Previous Campaign Performance':
-            st.title("Previous Campaign Performance")
-
             st.subheader("**Success Rate of Previous Campaigns**")
             cm1, cm2, cm3 = st.beta_columns(3)
 
@@ -330,7 +328,7 @@ if dataset != None:
             cust_accept_data = pd.DataFrame(campaign_dict, columns = ['Campaign Number', 'Number of Customers who Accepted Offer'])
 
             st.table(cust_accept_data)
-            fig = px.line(cust_accept_data, x = 'Campaign Number', y = 'Number of Customers who Accepted Offer', title = 'Number of Customers Responding to Campaigns', width = 1225, color_discrete_sequence = ['#344B47'])
+            fig = px.line(cust_accept_data, x = 'Campaign Number', y = 'Number of Customers who Accepted Offer', title = 'Number of Customers Responding to Campaigns', width = 1300, color_discrete_sequence = ['#344B47'])
             st.plotly_chart(fig)
     
     if page == 'Prediction Models':
