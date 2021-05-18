@@ -119,7 +119,7 @@ if dataset != None:
 
             with col1:
                 st.subheader("**Customer Year of Birth**")
-                fig = px.histogram(data_original, x = 'Year_Birth', nbins = 12, labels = {'Year_Birth': 'Birth Year'}, title = 'Histogram of Year of Birth', width = 520, height = 500, color_discrete_sequence = ['#10A898'])
+                fig = px.histogram(data_original, x = 'Year_Birth', nbins = 12, labels = {'Year_Birth': 'Birth Year'}, title = 'Histogram of Year of Birth', width = 550, height = 500, color_discrete_sequence = ['#10A898'])
                 st.plotly_chart(fig)
 
                 if st.checkbox('Show analysis of customer year of birth'):
@@ -128,7 +128,7 @@ if dataset != None:
             
             with col2:
                 st.subheader("**Customer Education Level**")
-                fig = px.histogram(data_original, x = 'Education', color = 'Education', labels = {'Education': 'Education Level'}, title = "Bar Plot of Customer Education Levels", width = 520, height = 500, color_discrete_map = {'Graduation': '#3FBB94', 'PhD': '#69CE8C', 'Master': '#96DE81', 'Basic': '#C5EC77', '2n Cycle': '#F9F871'})
+                fig = px.histogram(data_original, x = 'Education', color = 'Education', labels = {'Education': 'Education Level'}, title = "Bar Plot of Customer Education Levels", width = 550, height = 500, color_discrete_map = {'Graduation': '#3FBB94', 'PhD': '#69CE8C', 'Master': '#96DE81', 'Basic': '#C5EC77', '2n Cycle': '#F9F871'})
                 st.plotly_chart(fig)
 
                 if st.checkbox('Show analysis of customer education'):
@@ -155,7 +155,7 @@ if dataset != None:
 
             with col1:
                 st.subheader("**Customer Income**")
-                fig = px.histogram(data_original, x = 'Income', nbins = 20, title = 'Histogram of Customer Income Levels', width = 520, height = 500, color_discrete_sequence = ['#10A898'])
+                fig = px.histogram(data_original, x = 'Income', nbins = 20, title = 'Histogram of Customer Income Levels', width = 550, height = 500, color_discrete_sequence = ['#10A898'])
                 st.plotly_chart(fig)
 
                 if st.checkbox('Show analysis of customer income'):
@@ -163,7 +163,7 @@ if dataset != None:
             
             with col2:
                 st.subheader('**Customer Recency**')
-                fig = px.histogram(data_original, x = 'Recency', nbins = 12, labels = {'Recency': 'Recency (in days)'}, title = 'Histogram of Customer Income Levels', width = 520, height = 500, color_discrete_sequence = ['#96B1AC'])
+                fig = px.histogram(data_original, x = 'Recency', nbins = 12, labels = {'Recency': 'Recency (in days)'}, title = 'Histogram of Customer Income Levels', width = 550, height = 500, color_discrete_sequence = ['#96B1AC'])
                 st.plotly_chart(fig)
 
                 if st.checkbox('Show analysis of customer recency'):
@@ -177,23 +177,23 @@ if dataset != None:
 
             with wine:
                 st.markdown('**Wines**')
-                st.image('https://cdn2.iconfinder.com/data/icons/pittogrammi/142/98-512.png', width = 100)
+                st.image('https://cdn2.iconfinder.com/data/icons/pittogrammi/142/98-512.png', width = 125)
         
             with fruit:
                 st.markdown('**Fruit**')
-                st.image('https://cdn0.iconfinder.com/data/icons/food-set-4/64/Artboard_12_copy-512.png', width = 100)
+                st.image('https://cdn0.iconfinder.com/data/icons/food-set-4/64/Artboard_12_copy-512.png', width = 125)
 
             with meat:
                 st.markdown('**Meat**')
-                st.image('https://cdn0.iconfinder.com/data/icons/food-set-4/64/Artboard_6-512.png', width = 100)
+                st.image('https://cdn0.iconfinder.com/data/icons/food-set-4/64/Artboard_6-512.png', width = 125)
         
             with fish:
                 st.markdown('**Fish**')
-                st.image('https://icon-library.com/images/fish-food-icon/fish-food-icon-0.jpg', width = 100)
+                st.image('https://icon-library.com/images/fish-food-icon/fish-food-icon-0.jpg', width = 125)
         
             with sweets:
                 st.markdown('**Sweets**')
-                st.image('https://www.shareicon.net/data/512x512/2016/03/22/737942_food_512x512.png', width = 100)
+                st.image('https://www.shareicon.net/data/512x512/2016/03/22/737942_food_512x512.png', width = 125)
         
             st.markdown("<hr/>", unsafe_allow_html = True)
 
@@ -215,7 +215,7 @@ if dataset != None:
             sales_dict = {'Category': ['Wines', 'Fruit', 'Meat', 'Fish', 'Sweets'], 'Sales': [wine_sales, fruit_sales, meat_sales, fish_sales, sweet_sales]}
             sales_data = pd.DataFrame(sales_dict, columns = ['Category', 'Sales'])
 
-            fig = px.pie(sales_data, names = 'Category', values = 'Sales', color = 'Category', width = 1150, height = 500, title = 'Distribution of Sales: Pie Chart', color_discrete_map = {'Wines': '#3FBB94', 'Fruit': '#69CE8C', 'Meat': '#96DE81', 'Fish': '#C5EC77', 'Sweets': '#F9F871'})
+            fig = px.pie(sales_data, names = 'Category', values = 'Sales', color = 'Category', width = 1350, height = 500, title = 'Distribution of Sales: Pie Chart', color_discrete_map = {'Wines': '#3FBB94', 'Fruit': '#69CE8C', 'Meat': '#96DE81', 'Fish': '#C5EC77', 'Sweets': '#F9F871'})
             st.plotly_chart(fig)
 
             if st.checkbox("Click here to see the sales amounts of each category"):
