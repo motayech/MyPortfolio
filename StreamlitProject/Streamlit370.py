@@ -215,7 +215,7 @@ if dataset != None:
             sales_dict = {'Category': ['Wines', 'Fruit', 'Meat', 'Fish', 'Sweets'], 'Sales': [wine_sales, fruit_sales, meat_sales, fish_sales, sweet_sales]}
             sales_data = pd.DataFrame(sales_dict, columns = ['Category', 'Sales'])
 
-            fig = px.pie(sales_data, names = 'Category', values = 'Sales', color = 'Category', width = 1350, height = 500, title = 'Distribution of Sales: Pie Chart', color_discrete_map = {'Wines': '#3FBB94', 'Fruit': '#69CE8C', 'Meat': '#96DE81', 'Fish': '#C5EC77', 'Sweets': '#F9F871'})
+            fig = px.pie(sales_data, names = 'Category', values = 'Sales', color = 'Category', width = 1225, height = 500, title = 'Distribution of Sales: Pie Chart', color_discrete_map = {'Wines': '#3FBB94', 'Fruit': '#69CE8C', 'Meat': '#96DE81', 'Fish': '#C5EC77', 'Sweets': '#F9F871'})
             st.plotly_chart(fig)
 
             if st.checkbox("Click here to see the sales amounts of each category"):
