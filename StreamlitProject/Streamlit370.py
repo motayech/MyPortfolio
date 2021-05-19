@@ -27,7 +27,7 @@ if dataset == None:
     st.subheader("To begin identifying the customers who are most likely to accept our offers, simply upload the dataset above!")
     st.image('https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/publications/food-beverage-nutrition/foodnavigator-asia.com/headlines/markets/can-unmanned-convenience-stores-take-off-in-indonesia-jd.com-thinks-so/8506049-1-eng-GB/Can-unmanned-convenience-stores-take-off-in-Indonesia-JD.com-thinks-so.jpg')
 else:
-    st.title("Store X Application")
+    st.title("Store X Analysis Tool")
     st.image('https://previews.123rf.com/images/vectorpouch/vectorpouch1809/vectorpouch180900131/110754541-supermarket-and-grocery-food-products-on-shelves-vector-illustration-no-people-on-cartoon-background.jpg')
     data = pd.read_csv(dataset)
     data = data.dropna()
