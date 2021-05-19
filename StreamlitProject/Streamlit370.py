@@ -215,7 +215,7 @@ if dataset != None:
             sales_dict = {'Category': ['Wines', 'Fruit', 'Meat', 'Fish', 'Sweets'], 'Sales': [wine_sales, fruit_sales, meat_sales, fish_sales, sweet_sales]}
             sales_data = pd.DataFrame(sales_dict, columns = ['Category', 'Sales'])
 
-            fig = px.pie(sales_data, names = 'Category', values = 'Sales', color = 'Category', width = 1225, height = 500, title = 'Distribution of Sales: Pie Chart', color_discrete_map = {'Wines': '#3FBB94', 'Fruit': '#69CE8C', 'Meat': '#96DE81', 'Fish': '#C5EC77', 'Sweets': '#F9F871'})
+            fig = px.pie(sales_data, names = 'Category', values = 'Sales', color = 'Category', width = 1125, height = 500, title = 'Distribution of Sales: Pie Chart', color_discrete_map = {'Wines': '#3FBB94', 'Fruit': '#69CE8C', 'Meat': '#96DE81', 'Fish': '#C5EC77', 'Sweets': '#F9F871'})
             st.plotly_chart(fig)
 
             if st.checkbox("Click here to see the sales amounts of each category"):
@@ -261,7 +261,7 @@ if dataset != None:
             purchases_dict = {'Purchase Location': ['Online', 'Physical'], 'Purchases': [online_purchases, store_purchases]}
             purchases_data = pd.DataFrame(purchases_dict, columns = ['Purchase Location', 'Purchases'])
             
-            fig = px.pie(purchases_data, names = 'Purchase Location', values = 'Purchases', color = 'Purchase Location', width = 1225, height = 500, title = 'Distribution of Purchases: Pie Chart', color_discrete_map = {'Online': '#3FBB94', 'Physical': '#96DE81'})
+            fig = px.pie(purchases_data, names = 'Purchase Location', values = 'Purchases', color = 'Purchase Location', width = 1125, height = 500, title = 'Distribution of Purchases: Pie Chart', color_discrete_map = {'Online': '#3FBB94', 'Physical': '#96DE81'})
             st.plotly_chart(fig)
 
             if st.checkbox("Click here to see the units purchased in each store"):
@@ -328,7 +328,7 @@ if dataset != None:
             cust_accept_data = pd.DataFrame(campaign_dict, columns = ['Campaign Number', 'Number of Customers who Accepted Offer'])
 
             st.table(cust_accept_data)
-            fig = px.line(cust_accept_data, x = 'Campaign Number', y = 'Number of Customers who Accepted Offer', title = 'Number of Customers Responding to Campaigns', width = 1300, color_discrete_sequence = ['#344B47'])
+            fig = px.line(cust_accept_data, x = 'Campaign Number', y = 'Number of Customers who Accepted Offer', title = 'Number of Customers Responding to Campaigns', width = 1175, color_discrete_sequence = ['#344B47'])
             st.plotly_chart(fig)
     
     if page == 'Prediction Models':
