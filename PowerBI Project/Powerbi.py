@@ -2,7 +2,7 @@
 import streamlit as st 
 st.set_page_config(
     page_title = 'Power BI Dashboard',
-    page_icon = 'Power-BI-Logo.png',
+    page_icon = 'https://raw.githubusercontent.com/motayech/MyPortfolio/master/PowerBI%20Project/Power-BI-Logo.png',
     layout = 'wide'
 )
 
